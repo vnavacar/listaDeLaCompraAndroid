@@ -1,4 +1,4 @@
-package com.example.todolistandroid;
+package com.example.listaDeLaCompraAndroid;
 
 import org.junit.Test;
 
