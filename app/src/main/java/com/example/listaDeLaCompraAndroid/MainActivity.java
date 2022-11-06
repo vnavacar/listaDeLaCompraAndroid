@@ -28,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     static ListView listView;
     EditText input;
+    EditText inputPrecio;
     ImageView enter;
     static ListViewAdapter adapter;
     static ArrayList<String> items;
+    static ArrayList<Float> precios;
     //static
     static Context context;
 
@@ -39,19 +41,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.list);
-        input = findViewById(R.id.input);
+        input = findViewById(R.id.inputproducto);
+        inputPrecio = findViewById(R.id.inputprecio);
         enter = findViewById(R.id.add);
         context = getApplicationContext();
 
         // add hardcoded items to grocery list
         items = new ArrayList<>();
+        precios = new ArrayList<>();
         items.add("Platanos");
+        precios.add(5F);
         items.add("Pan");
+        precios.add(2F);
         items.add("Leche");
+        precios.add(2F);
 
 
         listView.setLongClickable(true);
-        adapter = new ListViewAdapter(this, items);
+        adapter = new ListViewAdapter(this, items, precios);
         listView.setAdapter(adapter);
 
         // Display the item name when the item's row is clicked
@@ -76,10 +83,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String text = input.getText().toString();
+                //Float precio = 0F;
                 if (text == null || text.length() == 0) {
                     makeToast("Enter an item.");
                 } else {
-                    addItem(text);
+                    addItem(text, 0F);
                     input.setText("");
                     makeToast("Added " + text);
                 }
@@ -109,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 items = new ArrayList<>();
             else items = new ArrayList<>(Arrays.asList(split));
 
-            adapter = new ListViewAdapter(this, items);
+            adapter = new ListViewAdapter(this, items, precios);
             listView.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
             FileOutputStream writer = new FileOutputStream(new File(path, "list.txt"));
             writer.write(items.toString().getBytes());
             writer.close();
+            writer.write(precios.toString().getBytes());
+            writer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,12 +144,14 @@ public class MainActivity extends AppCompatActivity {
     public static void removeItem(int i) {
         makeToast("Removed: " + items.get(i));
         items.remove(i);
+        precios.remove(i);
         listView.setAdapter(adapter);
     }
 
     // function to add an item given its name.
-    public static void addItem(String item) {
+    public static void addItem(String item, Float precio) {
         items.add(item);
+        precios.add(precio);
         listView.setAdapter(adapter);
     }
 

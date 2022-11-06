@@ -18,15 +18,17 @@ import java.util.ArrayList;
 
 class ListViewAdapter extends ArrayAdapter<String> {
     ArrayList<String> list;
+    ArrayList<Float> precios;
     Context context;
 
     // The ListViewAdapter Constructor
     // @param context: the Context from the MainActivity
     // @param items: The list of items in our Grocery List
-    public ListViewAdapter(Context context, ArrayList<String> items) {
+    public ListViewAdapter(Context context, ArrayList<String> items, ArrayList<Float> precio) {
         super(context, R.layout.list_row, items);
         this.context = context;
         list = items;
+        precios = precio;
     }
 
     // The method we override to provide our own layout for each View (row) in the ListView
@@ -55,7 +57,7 @@ class ListViewAdapter extends ArrayAdapter<String> {
             copy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MainActivity.addItem(list.get(position));
+                    MainActivity.addItem(list.get(position), precios.get(position));
                 }
             });
         }

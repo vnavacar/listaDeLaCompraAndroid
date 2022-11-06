@@ -15,14 +15,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter item here"
-                android:layout_centerInParent="true"
-                android:id="@+id/input"
-        />
+                android:hint="Producto Aqui"
+                android:id="@+id/inputproducto"
+                android:layout_alignParentTop="true" android:layout_centerInParent="true"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Precio Aqui"
+                android:id="@+id/inputprecio"
+                android:layout_below="@+id/inputproducto"
+                android:layout_centerHorizontal="true"/>
+                />
+
         <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:layout_toRightOf="@+id/input"
+                android:layout_toRightOf="@+id/inputproducto"
                 android:id="@+id/add"
                 android:layout_marginLeft="7sp"
                 android:src="@drawable/add_item"
