@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView enter;
     static ListViewAdapter adapter;
     static ArrayList<String> items;
+    //static
     static Context context;
 
     @Override
@@ -44,11 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
         // add hardcoded items to grocery list
         items = new ArrayList<>();
-        items.add("Apple");
-        items.add("Banana");
-        items.add("Orange");
-        items.add("Strawberry");
-        items.add("Kiwi");
+        items.add("Platanos");
+        items.add("Pan");
+        items.add("Leche");
+
 
         listView.setLongClickable(true);
         adapter = new ListViewAdapter(this, items);
