@@ -39,12 +39,14 @@ class ListViewAdapter extends ArrayAdapter<String> {
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.list_row, null);
             TextView name = convertView.findViewById(R.id.name);
+            TextView TextPrecio = convertView.findViewById(R.id.price);
             ImageView remove = convertView.findViewById(R.id.remove);
             ImageView copy = convertView.findViewById(R.id.copy);
             TextView number = convertView.findViewById(R.id.number);
 
             number.setText(position + 1 + ".");
             name.setText(list.get(position));
+            TextPrecio.setText(precios.get(position) + "€");
 
             // Listeners for duplicating and removing an item.
             // They use the static removeItem and addItem methods created in MainActivity.
