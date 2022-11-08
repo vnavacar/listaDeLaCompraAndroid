@@ -26,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/name"
-            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+
             android:layout_marginBottom="2sp"
             android:textColor="#A9E0F4"
             android:textStyle="bold" />

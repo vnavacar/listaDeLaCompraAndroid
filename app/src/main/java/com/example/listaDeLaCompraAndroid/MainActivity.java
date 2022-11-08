@@ -83,11 +83,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String text = input.getText().toString();
+                float euros = Float.parseFloat(inputPrecio.getText().toString());
+                //float euros =
                 //Float precio = 0F;
                 if (text == null || text.length() == 0) {
                     makeToast("Enter an item.");
                 } else {
-                    addItem(text, 0F);
+                    addItem(text, euros);
                     input.setText("");
                     makeToast("Added " + text);
                 }
